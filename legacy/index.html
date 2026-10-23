@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VendMart – Everything is Vendingable | Vending Machine Indonesia</title>
+<meta name="description" content="VendMart menyediakan vending machine pintar: sewa, kerja sama bagi hasil, kepemilikan, servis, gudang, dan branding special project di seluruh Indonesia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header id="header">
+  <div class="container nav">
+    <a href="#home" class="logo">Vend<span>Mart</span></a>
+    <ul id="menu">
+      <li><a href="#services">Layanan</a></li>
+      <li><a href="#machines">Mesin</a></li>
+      <li><a href="#how">Cara Kerja</a></li>
+      <li><a href="#ownership">Ownership</a></li>
+      <li><a href="#project">Special Project</a></li>
+      <li><a href="#contact">Kontak</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary" id="navCta">Konsultasi Gratis</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <span class="eyebrow">Smart Vending Solutions</span>
+      <h1>Everything is <span class="grad">Vendingable.</span></h1>
+      <p>VendMart menghadirkan vending machine modern untuk bisnis, kampus, kantor, dan ruang publik. Mulai dari sewa, kerja sama untung bersama, hingga kepemilikan penuh.</p>
+      <div class="hero-cta">
+        <a href="#machines" class="btn btn-primary" id="heroCta1">Lihat Mesin →</a>
+        <a href="#services" class="btn btn-ghost" id="heroCta2">Pelajari Layanan</a>
+      </div>
+      <div class="stats">
+        <div><b data-count="500">0</b><small>Mesin Aktif</small></div>
+        <div><b data-count="120">0</b><small>Lokasi Mitra</small></div>
+        <div><b data-count="24">0</b><small>Jam Beroperasi</small></div>
+      </div>
+    </div>
+    <div class="hero-img reveal">
+      <img src="assets/hero.jpg" alt="Vending machine VendMart dengan LED teal dan oranye" width="600" height="800">
+      <div class="badge b1">📱 Pembayaran QRIS &amp; Cashless</div>
+      <div class="badge b2">📡 Monitoring Real-time</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>🥤 Minuman</span><span>🍫 Snack</span><span>🍜 Mie Instan</span><span>🧊 Frozen Food</span><span>🔒 Locker</span><span>💊 Kesehatan</span><span>🎁 Merchandise</span>
+    <span>🥤 Minuman</span><span>🍫 Snack</span><span>🍜 Mie Instan</span><span>🧊 Frozen Food</span><span>🔒 Locker</span><span>💊 Kesehatan</span><span>🎁 Merchandise</span>
+  </div>
+</div>
+
+<section id="services">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Layanan Kami</span>
+      <h2>Solusi vending <span class="grad">end-to-end</span></h2>
+      <p class="lead">Dari konsultasi sampai perawatan, semua kebutuhan bisnis vending Anda ditangani satu atap.</p>
+    </div>
+    <div class="grid g3">
+      <article class="card reveal"><div class="icon">🤝</div><h3>Rental &amp; Kerja Sama Profit</h3><p>Tempatkan mesin di lokasi Anda tanpa modal besar. Pilih sewa tetap atau skema bagi hasil yang menguntungkan.</p></article>
+      <article class="card reveal"><div class="icon">🛠️</div><h3>Vending Service &amp; Warehouse</h3><p>Perawatan berkala, isi ulang stok, dan gudang penyimpanan produk agar mesin selalu penuh dan siap jual.</p></article>
+      <article class="card reveal"><div class="icon">🏷️</div><h3>Ownership With/out Assistance</h3><p>Beli mesin dan kelola sendiri, atau didampingi tim kami dari penempatan sampai operasional harian.</p></article>
+      <article class="card reveal"><div class="icon">🎨</div><h3>Branding &amp; Special Project</h3><p>Ubah mesin jadi media promosi: wrap custom, konten layar, sampling produk, dan aktivasi event.</p></article>
+      <article class="card reveal"><div class="icon">💡</div><h3>Konsultasi Vending Machine</h3><p>Analisis lokasi, pemilihan produk, dan estimasi balik modal berdasarkan data lapangan.</p></article>
+      <article class="card reveal"><div class="icon">📊</div><h3>Dashboard Penjualan</h3><p>Pantau stok, transaksi, dan performa tiap mesin secara real-time dari ponsel Anda.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="machines" id="machines">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Katalog Mesin</span>
+      <h2>Pilih mesin yang <span class="grad">pas</span></h2>
+      <p class="lead">Beragam ukuran dan tipe untuk setiap kebutuhan dan ruang.</p>
+    </div>
+    <div class="filters reveal">
+      <button class="chip active" data-filter="all">Semua</button>
+      <button class="chip" data-filter="standard">Standard</button>
+      <button class="chip" data-filter="special">Specialized</button>
+    </div>
+    <div class="grid g4">
+      <article class="card machine reveal" data-type="standard"><div class="vm"><i></i><b></b></div><h3>Vending L10</h3><span class="tag">Compact</span><p>Mesin ringkas serbaguna untuk snack dan minuman.</p><a href="#contact">Tanya harga →</a></article>
+      <article class="card machine reveal" data-type="standard" style="--c:#4d8bff"><div class="vm"><i></i><b></b></div><h3>Vending L10 Slim</h3><span class="tag">Slim</span><p>Desain tipis untuk lorong dan lobi sempit.</p><a href="#contact">Tanya harga →</a></article>
+      <article class="card machine reveal" data-type="standard"><div class="vm"><i></i><b></b></div><h3>Vending L22</h3><span class="tag">Medium</span><p>Kapasitas menengah dengan layar sentuh interaktif.</p><a href="#contact">Tanya harga →</a></article>
+      <article class="card machine reveal" data-type="standard" style="--c:var(--orange)"><div class="vm"><i></i><b></b></div><h3>Vending LX49</h3><span class="tag">Large</span><p>Kapasitas besar untuk lokasi dengan trafik tinggi.</p><a href="#contact">Tanya harga →</a></article>
+      <article class="card machine reveal" data-type="standard"><div class="vm"><i></i><b></b></div><h3>Vending LT49</h3><span class="tag">Touch</span><p>Layar besar untuk iklan dan pengalaman belanja premium.</p><a href="#contact">Tanya harga →</a></article>
+      <article class="card machine reveal" data-type="standard" style="--c:#4d8bff"><div class="vm"><i></i><b></b></div><h3>Vending LM55</h3><span class="tag">Max</span><p>Flagship dengan layar 55" dan kapasitas terbesar.</p><a href="#contact">Tanya harga →</a></article>
+      <article class="card machine reveal" data-type="special" style="--c:#7ce8ff"><div class="vm"><i></i><b></b></div><h3>L10 Frozen</h3><span class="tag">Specialized</span><p>Pendingin beku untuk es krim dan frozen food.</p><a href="#contact">Tanya harga →</a></article>
+      <article class="card machine reveal" data-type="special" style="--c:var(--orange)"><div class="vm"><i></i><b></b></div><h3>L10 Noodle</h3><span class="tag">Specialized</span><p>Seduh mie instan panas otomatis dalam hitungan detik.</p><a href="#contact">Tanya harga →</a></article>
+      <article class="card machine reveal" data-type="special"><div class="vm"><i></i><b></b></div><h3>Locker Extension</h3><span class="tag">Specialized</span><p>Loker tambahan untuk produk besar dan pengambilan paket.</p><a href="#contact">Tanya harga →</a></article>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Cara Kerja</span>
+      <h2>Mulai dalam <span class="grad">4 langkah</span></h2>
+    </div>
+    <div class="grid steps">
+      <div class="card step reveal"><h3>Konsultasi</h3><p>Ceritakan lokasi dan target bisnis Anda.</p></div>
+      <div class="card step reveal"><h3>Survei &amp; Penawaran</h3><p>Kami analisis lokasi dan siapkan skema terbaik.</p></div>
+      <div class="card step reveal"><h3>Instalasi</h3><p>Mesin dipasang, diisi, dan siap menerima transaksi.</p></div>
+      <div class="card step reveal"><h3>Monitoring</h3><p>Pantau penjualan dan kami urus perawatannya.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="ownership" class="machines">
+  <div class="container split">
+    <div class="reveal">
+      <span class="eyebrow">Ownership</span>
+      <h2>Miliki bisnis vending <span class="grad">Anda sendiri</span></h2>
+      <p class="lead">Pilih mandiri penuh atau didampingi tim VendMart dari awal hingga mesin menghasilkan.</p>
+      <ul class="list">
+        <li>Pelatihan operasional &amp; pemilihan produk</li>
+        <li>Garansi mesin dan layanan purna jual</li>
+        <li>Akses dashboard &amp; laporan penjualan</li>
+        <li>Opsi gudang dan restock terjadwal</li>
+      </ul>
+      <a href="#contact" class="btn btn-primary" id="ownCta">Jadi Pemilik Mesin</a>
+    </div>
+    <div class="reveal"><img src="assets/hero.jpg" alt="Mesin vending VendMart untuk kepemilikan bisnis" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="project" id="project">
+  <div class="container reveal">
+    <span class="eyebrow">Branding with Special Project</span>
+    <h2>Jadikan mesin vending <span class="grad">panggung brand</span> Anda</h2>
+    <p class="lead">Kampanye sampling, peluncuran produk, hingga aktivasi event dengan mesin custom dan konten layar dinamis.</p>
+    <a href="#contact" class="btn btn-primary" id="projCta">Diskusikan Project</a>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Galeri</span>
+      <h2>Ikuti kami di <span class="grad">Instagram</span></h2>
+      <p class="lead">Intip aktivitas, instalasi terbaru, dan keseruan tim @vendmart.id.</p>
+    </div>
+    <div class="grid gallery">
+      <div class="tile reveal" style="background:linear-gradient(135deg,#19e3c5,#0d1326)">🥤<span>Instalasi kampus</span></div>
+      <div class="tile reveal" style="background:linear-gradient(135deg,#ff7a1a,#1a0f2e)">🍜<span>Noodle machine</span></div>
+      <div class="tile reveal" style="background:linear-gradient(135deg,#4d8bff,#0d1326)">🏢<span>Lobi perkantoran</span></div>
+      <div class="tile reveal" style="background:linear-gradient(135deg,#ff4f81,#ff7a1a)">🎉<span>Event activation</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="machines" id="faq">
+  <div class="container">
+    <div class="sec-head reveal" style="text-align:center"><span class="eyebrow">FAQ</span><h2>Pertanyaan <span class="grad">umum</span></h2></div>
+    <div class="faq reveal">
+      <details><summary>Apakah saya perlu modal besar?</summary><p>Tidak. Dengan skema rental atau kerja sama bagi hasil, Anda bisa mulai tanpa membeli mesin.</p></details>
+      <details><summary>Siapa yang mengisi ulang stok?</summary><p>Tergantung paket. Kami bisa menangani restock dan gudang, atau Anda kelola sendiri.</p></details>
+      <details><summary>Metode pembayaran apa yang didukung?</summary><p>QRIS, e-wallet, kartu, dan uang tunai sesuai tipe mesin.</p></details>
+      <details><summary>Apakah layanan tersedia di luar Jakarta?</summary><p>Ya, kami melayani banyak kota di Indonesia. Hubungi tim marketing untuk cek area.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container split" style="align-items:start">
+    <div class="info reveal">
+      <span class="eyebrow">Hubungi Kami</span>
+      <h2>Ayo mulai <span class="grad">bisnis vending</span></h2>
+      <p><strong>☎ Marketing</strong>0852-1223-8881</p>
+      <p><strong>☎ Kantor</strong>021-420-2556</p>
+      <p><strong>✉ Email</strong>marketing@vendmart.id</p>
+      <p><strong>📍 Alamat</strong>Jl. Garuda No.32 RT.1/RW.5, Kemayoran, Jakarta 10620</p>
+      <div class="map"><iframe title="Peta lokasi VendMart" loading="lazy" src="https://www.google.com/maps?q=Jl.+Garuda+No.32+Kemayoran+Jakarta&output=embed"></iframe></div>
+    </div>
+    <form id="contactForm" class="card reveal">
+      <input name="nama" placeholder="Nama lengkap" required>
+      <input name="email" type="email" placeholder="Email" required>
+      <select name="minat" required>
+        <option value="">Minat layanan…</option>
+        <option>Rental &amp; Kerja Sama</option><option>Ownership</option><option>Service &amp; Warehouse</option><option>Special Project</option><option>Konsultasi</option>
+      </select>
+      <textarea name="pesan" rows="5" placeholder="Ceritakan kebutuhan Anda" required></textarea>
+      <button class="btn btn-primary" type="submit" id="submitBtn">Kirim via WhatsApp</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="fgrid">
+      <div><a href="#home" class="logo">Vend<span>Mart</span></a><p style="margin-top:14px">Everything is Vendingable. Solusi vending machine modern untuk Indonesia.</p></div>
+      <div><h4>Layanan</h4><ul><li><a href="#services">Rental &amp; Kerja Sama</a></li><li><a href="#services">Service &amp; Warehouse</a></li><li><a href="#ownership">Ownership</a></li><li><a href="#project">Special Project</a></li></ul></div>
+      <div><h4>Mesin</h4><ul><li>Vending L10 / Slim</li><li>Vending L22</li><li>Vending LX49 / LT49</li><li>Vending LM55</li></ul></div>
+      <div><h4>Kantor</h4><p>☎ 0852-1223-8881<br>☎ 021-420-2556<br>✉ marketing@vendmart.id<br>Kemayoran, Jakarta 10620</p></div>
+    </div>
+    <div class="copy">© <span id="year"></span> VendMart. All rights reserved.</div>
+  </div>
+</footer>
+<div class="toast" id="toast">Membuka WhatsApp… ✓</div>
+<script src="script.js"></script>
+</body>
+</html>
