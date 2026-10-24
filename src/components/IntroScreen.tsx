@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 const DEFAULT_VIDEOS = [
-  "/assets/video/The%20Vending%20Machine%20_%20Calarts%20Film%202022.mp4",
+  "/assets/video/vendmart-intro.mp4",
 ];
 
 function VendmartWord() {
@@ -168,6 +168,7 @@ export default function IntroScreen() {
           loop={videoList.length <= 1}
           preload="auto"
           onPlaying={() => setIsVideoReady(true)}
+          onError={() => setIsVideoReady(true)}
           onEnded={handleVideoEnded}
           key={currentVideoSrc}
           className={`h-full w-full object-cover object-center filter brightness-90 transition-opacity duration-700 ${
