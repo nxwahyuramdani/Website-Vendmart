@@ -7,6 +7,7 @@ import MachineGrid from "@/components/MachineGrid";
 import ContactForm from "@/components/ContactForm";
 import BrandMarquee from "@/components/BrandMarquee";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import IntroScreen from "@/components/IntroScreen";
 import { useLanguage } from "@/context/LanguageContext";
 
 const wrap = "mx-auto max-w-7xl px-4 sm:px-6";
@@ -28,6 +29,7 @@ export default function Home() {
 
   return (
     <>
+      <IntroScreen />
       <Header />
       <main>
         {/* HERO SECTION */}

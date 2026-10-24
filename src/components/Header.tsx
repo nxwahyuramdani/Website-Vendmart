@@ -6,7 +6,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/context/LanguageContext";
 
-export function Logo({ onOrange = false }: { onOrange?: boolean }) {
+export function Logo({ onOrange = false, className }: { onOrange?: boolean; className?: string }) {
   return (
     <a
       href="#home"
@@ -16,10 +16,10 @@ export function Logo({ onOrange = false }: { onOrange?: boolean }) {
       <Image
         src="/assets/Vendmart Logo.png"
         alt="VendMart"
-        width={210}
-        height={52}
+        width={260}
+        height={65}
         priority
-        className="h-11 sm:h-12 w-auto object-contain"
+        className={className || "h-12 sm:h-14 md:h-[58px] w-auto object-contain"}
       />
     </a>
   );

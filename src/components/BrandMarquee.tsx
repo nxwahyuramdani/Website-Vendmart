@@ -172,20 +172,13 @@ export const partnerBrands: Brand[] = [
 
 export default function BrandMarquee() {
   const { t } = useLanguage();
-  const [activeBrandId, setActiveBrandId] = useState<string | null>(null);
-
-  const activeBrand = partnerBrands.find((b) => b.id === activeBrandId) || null;
-
-  const handleBrandClick = (brandId: string) => {
-    setActiveBrandId((prev) => (prev === brandId ? null : brandId));
-  };
 
   const doubledBrands = [...partnerBrands, ...partnerBrands];
 
   return (
     <div className="w-full">
       {/* HEADER SECTION: Follows Light & Dark mode */}
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+      <div className="mb-6 sm:mb-8 flex flex-wrap items-center justify-between gap-4">
         <div>
           <span className="text-xs font-bold uppercase tracking-[0.16em] text-orange">
             {t.brandSection.badge}
@@ -199,102 +192,39 @@ export default function BrandMarquee() {
         </div>
       </div>
 
-      {/* MARQUEE CAROUSEL CONTAINER: Continuous running, adapts to dark & light mode */}
-      <div className="relative overflow-hidden rounded-2xl border border-line bg-surface/50 py-6">
-        {/* Gradient edge masks: dynamic to surface background in both light & dark mode */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 sm:w-24 bg-gradient-to-r from-surface via-surface/80 to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 sm:w-24 bg-gradient-to-l from-surface via-surface/80 to-transparent" />
+      {/* MARQUEE CAROUSEL CONTAINER: Seamless running strip without boxy borders */}
+      <div className="relative overflow-hidden py-3 sm:py-5">
+        {/* Subtle gradient edge masks: logos fade in and out smoothly */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 sm:w-28 bg-gradient-to-r from-surface via-surface/85 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 sm:w-28 bg-gradient-to-l from-surface via-surface/85 to-transparent" />
 
-        {/* RUNNING TRACK: Continues running smoothly */}
+        {/* RUNNING TRACK: Jarak lebih rapat, ukuran gambar diperbesar, hover menyala berwarna dan pause */}
         <div
-          className="flex w-max gap-4 sm:gap-6 animate-marquee"
+          className="flex w-max items-center gap-2 sm:gap-4 animate-marquee hover:[animation-play-state:paused]"
           style={{
-            animationDuration: "42s",
+            animationDuration: "45s",
           }}
         >
-          {doubledBrands.map((brand, index) => {
-            const isSelected = activeBrandId === brand.id;
-            return (
-              <button
-                key={`${brand.id}-${index}`}
-                type="button"
-                onClick={() => handleBrandClick(brand.id)}
-                title={brand.name}
-                className={`group relative flex h-20 min-w-[200px] sm:min-w-[220px] items-center justify-center rounded-2xl px-6 border transition-all duration-300 ${
-                  isSelected
-                    ? "scale-105 bg-white shadow-[0_0_30px_rgba(255,177,33,0.35)] ring-2 ring-orange border-transparent"
-                    : "border-line bg-white shadow-xs hover:border-orange hover:shadow-[0_8px_25px_rgba(255,177,33,0.3)] hover:scale-105"
-                }`}
-              >
-                {/* LOGO: Abu-abu saat idle (grayscale), Warnanya nyala saat cursor diarahkan (group-hover:grayscale-0) */}
-                <div className="relative flex h-12 w-36 items-center justify-center transition-all duration-300">
-                  <Image
-                    src={encodeURI(`/assets/brand/${brand.file}`)}
-                    alt={brand.name}
-                    fill
-                    sizes="180px"
-                    className={`object-contain transition-all duration-300 ${
-                      isSelected
-                        ? "filter-none opacity-100 scale-105"
-                        : "grayscale opacity-55 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
-                    }`}
-                  />
-                </div>
-
-                {/* Indicator dot if active */}
-                {isSelected && (
-                  <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-orange"></span>
-                  </span>
-                )}
-              </button>
-            );
-          })}
+          {doubledBrands.map((brand, index) => (
+            <div
+              key={`${brand.id}-${index}`}
+              title={brand.name}
+              className="group relative flex cursor-pointer items-center justify-center p-1 sm:p-1.5 outline-none transition-all duration-300"
+            >
+              {/* LOGO: Tanpa border kotak, ukuran lebih besar & jelas, abu-abu saat idle, menyala berwarna saat kursor diarahkan */}
+              <div className="relative flex h-16 w-44 sm:h-22 sm:w-56 items-center justify-center transition-all duration-300 group-hover:scale-105">
+                <Image
+                  src={encodeURI(`/assets/brand/${brand.file}`)}
+                  alt={brand.name}
+                  fill
+                  sizes="(min-width: 640px) 240px, 180px"
+                  className="object-contain grayscale opacity-45 contrast-125 dark:brightness-125 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100 group-hover:drop-shadow-sm"
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-
-      {/* ACTIVE BRAND DETAIL BADGE: Fully follows Light & Dark theme */}
-      {activeBrand && (
-        <div className="mt-5 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-line bg-main p-5 text-ink shadow-xl transition-all duration-300 animate-in fade-in">
-          <div className="flex items-center gap-4">
-            <div className="relative flex h-14 w-28 items-center justify-center rounded-xl bg-surface border border-line p-2 shadow-xs">
-              <Image
-                src={encodeURI(`/assets/brand/${activeBrand.file}`)}
-                alt={activeBrand.name}
-                fill
-                sizes="120px"
-                className="object-contain p-1"
-              />
-            </div>
-            <div>
-              <div className="flex flex-wrap items-center gap-2">
-                <h4 className="font-extrabold text-ink text-base md:text-lg">{activeBrand.name}</h4>
-                <span className={`rounded-full border px-2.5 py-0.5 text-[11px] font-bold ${activeBrand.bgBadge}`}>
-                  {activeBrand.category}
-                </span>
-              </div>
-              <p className="mt-1 text-xs text-ink-soft md:text-sm">
-                {activeBrand.role}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
-              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              {t.brandSection.activePartner}
-            </span>
-            <button
-              type="button"
-              onClick={() => setActiveBrandId(null)}
-              className="ml-2 rounded-lg border border-line bg-surface px-3 py-1 text-xs font-semibold text-ink-soft transition hover:bg-main hover:text-ink"
-            >
-              ✕ {t.brandSection.closeBadge}
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
