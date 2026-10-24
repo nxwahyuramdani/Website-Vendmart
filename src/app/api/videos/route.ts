@@ -16,7 +16,9 @@ export async function GET() {
     return NextResponse.json({ videos: videoFiles });
   } catch {
     return NextResponse.json({
-      videos: ["/assets/video/vendmart-intro.mp4"],
+      videos: [
+        "/assets/video/The%20Vending%20Machine%20_%20Calarts%20Film%202022.mp4",
+      ],
     });
   }
 }
