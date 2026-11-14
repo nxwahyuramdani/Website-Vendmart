@@ -144,7 +144,7 @@ export const translations: Record<Language, Translations> = {
       services: "Layanan",
       machines: "Mesin",
       advertising: "Iklan",
-      how: "Cara Kerja",
+      how: "Tahapan Kerjasama",
       ownership: "Ownership",
       project: "Special Project",
       contact: "Kontak",
@@ -312,7 +312,7 @@ export const translations: Record<Language, Translations> = {
       ],
     },
     howSection: {
-      badge: "Cara Kerja",
+      badge: "Tahapan Kerjasama",
       title: "Mulai dalam empat langkah.",
       steps: [
         { t: "Konsultasi", d: "Ceritakan lokasi dan target bisnis Anda." },
@@ -388,7 +388,7 @@ export const translations: Record<Language, Translations> = {
     brandSection: {
       badge: "Kemitraan Terpercaya",
       title: "Dipercaya oleh Mitra & Brand Terkemuka",
-      desc: "Arahkan kursor ke logo brand untuk menyalakan warna asli kemitraan VendMart.",
+      desc: "",
       activePartner: "Mitra Aktif VendMart",
       closeBadge: "Tutup",
     },
@@ -642,7 +642,7 @@ export const translations: Record<Language, Translations> = {
     brandSection: {
       badge: "Trusted Partnerships",
       title: "Trusted by Leading Brands & Partners",
-      desc: "Hover over any brand logo to light up full colors and view collaboration details.",
+      desc: "",
       activePartner: "Active VendMart Partner",
       closeBadge: "Close",
     },
@@ -896,7 +896,7 @@ export const translations: Record<Language, Translations> = {
     brandSection: {
       badge: "值得信赖的合作伙伴",
       title: "深受知名品牌与战略伙伴的信赖",
-      desc: "将光标悬停在品牌标志上即可点亮原色并查看合作信息。",
+      desc: "",
       activePartner: "VendMart 活跃合作伙伴",
       closeBadge: "关闭",
     },

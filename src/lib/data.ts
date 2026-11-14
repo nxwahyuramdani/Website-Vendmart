@@ -150,7 +150,7 @@ export const nav = [
   { href: "#services", label: "Layanan" },
   { href: "#machines", label: "Mesin" },
   { href: "#advertising", label: "Iklan" },
-  { href: "#how", label: "Cara Kerja" },
+  { href: "#how", label: "Tahapan Kerjasama" },
   { href: "#ownership", label: "Ownership" },
   { href: "#project", label: "Special Project" },
   { href: "#contact", label: "Kontak" },

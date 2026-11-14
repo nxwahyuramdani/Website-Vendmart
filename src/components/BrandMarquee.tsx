@@ -186,9 +186,6 @@ export default function BrandMarquee() {
           <h3 className="mt-1 text-2xl font-extrabold text-ink md:text-3xl">
             {t.brandSection.title}
           </h3>
-          <p className="mt-1 text-xs sm:text-sm text-ink-soft">
-            {t.brandSection.desc}
-          </p>
         </div>
       </div>
 
