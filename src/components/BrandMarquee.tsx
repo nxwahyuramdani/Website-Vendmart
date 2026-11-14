@@ -211,14 +211,14 @@ export default function BrandMarquee() {
               title={brand.name}
               className="group relative flex cursor-pointer items-center justify-center p-1 sm:p-1.5 outline-none transition-all duration-300"
             >
-              {/* LOGO: Tanpa border kotak, ukuran lebih besar & jelas, abu-abu saat idle, menyala berwarna saat kursor diarahkan */}
+              {/* LOGO: Tanpa border kotak, ukuran lebih besar & jelas. Light mode abu-abu (hover berwarna), Dark mode langsung berwarna asli */}
               <div className="relative flex h-16 w-44 sm:h-22 sm:w-56 items-center justify-center transition-all duration-300 group-hover:scale-105">
                 <Image
                   src={encodeURI(`/assets/brand/${brand.file}`)}
                   alt={brand.name}
                   fill
                   sizes="(min-width: 640px) 240px, 180px"
-                  className="object-contain grayscale opacity-45 contrast-125 dark:brightness-125 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100 group-hover:drop-shadow-sm"
+                  className="brand-logo-img object-contain"
                 />
               </div>
             </div>

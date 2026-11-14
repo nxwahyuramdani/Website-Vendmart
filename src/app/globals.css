@@ -17,6 +17,7 @@
 }
 
 :root {
+  color-scheme: light;
   --color-main: #ffffff;
   --color-surface: #f8fafc;
   --color-ink: #0f172a;
@@ -26,7 +27,9 @@
   --color-orange-line: #fedda6;
 }
 
-html.dark {
+html.dark,
+.dark {
+  color-scheme: dark;
   --color-main: #080d17;
   --color-surface: #0e1726;
   --color-ink: #f8fafc;
@@ -92,4 +95,46 @@ section[id] {
     transition: none !important;
   }
 }
+
+/* Brand Marquee: Light mode grayscale with hover color, Dark mode immediately full original color */
+.brand-logo-img {
+  filter: grayscale(1);
+  opacity: 0.6;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand-logo-img:hover,
+.group:hover .brand-logo-img {
+  filter: grayscale(0) !important;
+  opacity: 1 !important;
+}
+
+html.dark .brand-logo-img,
+.dark .brand-logo-img {
+  filter: grayscale(0) !important;
+  opacity: 1 !important;
+}
+
+/* Google Maps iframe in dark mode */
+html.dark iframe,
+.dark iframe {
+  filter: invert(0.9) hue-rotate(180deg) !important;
+}
+
+/* Header logo in dark mode */
+html.dark header a[aria-label="VendMart"] img,
+.dark header a[aria-label="VendMart"] img {
+  filter: brightness(0) invert(1);
+}
+
+/* Form controls in dark mode */
+html.dark select,
+html.dark input,
+html.dark textarea,
+.dark select,
+.dark input,
+.dark textarea {
+  color-scheme: dark;
+}
+
 

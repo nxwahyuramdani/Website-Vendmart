@@ -8,6 +8,7 @@ import ContactForm from "@/components/ContactForm";
 import BrandMarquee from "@/components/BrandMarquee";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import IntroScreen from "@/components/IntroScreen";
+import AdvertisingCards from "@/components/AdvertisingCards";
 import { useLanguage } from "@/context/LanguageContext";
 
 const wrap = "mx-auto max-w-7xl px-4 sm:px-6";
@@ -182,17 +183,7 @@ export default function Home() {
               </div>
             </Reveal>
 
-            <div className="mt-12 sm:mt-16 grid gap-6 md:grid-cols-3">
-              {t.advertisingSection.cards.map((o, i) => (
-                <Reveal key={o.n} delay={i * 90}>
-                  <article className="h-full rounded-2xl border border-line bg-surface p-6 sm:p-8 transition-all hover:border-orange hover:shadow-lg">
-                    <span className="text-4xl sm:text-5xl font-extrabold text-orange/30">{o.n}</span>
-                    <h3 className="mt-4 text-xl sm:text-2xl font-bold text-ink">{o.title}</h3>
-                    <p className="mt-3 text-sm sm:text-base text-ink-soft leading-relaxed">{o.desc}</p>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
+            <AdvertisingCards />
 
             <Reveal className="mt-12 sm:mt-16 grid gap-8 sm:gap-10 rounded-2xl bg-surface p-6 sm:p-8 md:p-14 lg:grid-cols-12 border border-line">
               <div className="lg:col-span-5">
@@ -343,24 +334,50 @@ export default function Home() {
                 {t.contactSection.title}
               </h2>
               <dl className="mt-8 sm:mt-10 divide-y divide-line border-y border-line text-sm sm:text-base">
-                {[
-                  [t.contactSection.marketing, "0852-1223-8881"],
-                  [t.contactSection.office, "021-420-2556"],
-                  [t.contactSection.email, "marketing@vendmart.id"],
-                  [t.contactSection.address, t.contactSection.addressVal],
-                ].map(([k, v]) => (
-                  <div key={k} className="grid grid-cols-[100px_1fr] sm:grid-cols-[110px_1fr] py-3.5 sm:py-4">
-                    <dt className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-orange">{k}</dt>
-                    <dd className="text-ink">{v}</dd>
-                  </div>
-                ))}
+                <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[110px_1fr] py-3.5 sm:py-4">
+                  <dt className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-orange">{t.contactSection.marketing}</dt>
+                  <dd className="text-ink">
+                    <a href="https://wa.me/6281119072300" target="_blank" rel="noopener noreferrer" className="transition hover:text-orange">
+                      +62 811-1907-2300
+                    </a>
+                  </dd>
+                </div>
+                <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[110px_1fr] py-3.5 sm:py-4">
+                  <dt className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-orange">{t.contactSection.office}</dt>
+                  <dd className="text-ink">
+                    <a href="tel:02129450966" className="transition hover:text-orange">
+                      021-29450966
+                    </a>
+                  </dd>
+                </div>
+                <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[110px_1fr] py-3.5 sm:py-4">
+                  <dt className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-orange">{t.contactSection.email}</dt>
+                  <dd className="text-ink">
+                    <a href="mailto:ops@vendmart.id" className="transition hover:text-orange">
+                      ops@vendmart.id
+                    </a>
+                  </dd>
+                </div>
+                <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[110px_1fr] py-3.5 sm:py-4">
+                  <dt className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-orange">{t.contactSection.address}</dt>
+                  <dd className="text-ink leading-relaxed">
+                    <a
+                      href="https://maps.google.com/?q=Komplek+Perkantoran+Gading+Bukit+Indah+Blok+TA+10+Jl+Raya+Gading+Kirana+Kelapa+Gading+Jakarta"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition hover:text-orange"
+                    >
+                      {t.contactSection.addressVal}
+                    </a>
+                  </dd>
+                </div>
               </dl>
               <div className="mt-8 h-56 sm:h-64 overflow-hidden rounded-2xl border border-line">
                 <iframe
                   title={t.contactSection.mapTitle}
                   loading="lazy"
                   className="h-full w-full grayscale dark:invert-[0.9]"
-                  src="https://www.google.com/maps?q=Jl.+Garuda+No.32+Kemayoran+Jakarta&output=embed"
+                  src="https://www.google.com/maps?q=Komplek+Perkantoran+Gading+Bukit+Indah+Blok+TA+10+Jl+Raya+Gading+Kirana+Kelapa+Gading+Jakarta&output=embed"
                 />
               </div>
             </Reveal>
@@ -407,15 +424,51 @@ export default function Home() {
                 <h4 className="mb-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-white/75">
                   {t.footer.contactTitle}
                 </h4>
-                <p className="space-y-2 text-sm sm:text-base text-white/90">
-                  0852-1223-8881<br />
-                  marketing@vendmart.id<br />
-                  Kemayoran, Jakarta
-                </p>
+                <ul className="space-y-2.5 text-sm text-white/90">
+                  <li className="flex items-center gap-2.5">
+                    <svg className="h-4 w-4 flex-shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    <a href="https://wa.me/6281119072300" target="_blank" rel="noopener noreferrer" className="transition hover:underline">
+                      +62 811-1907-2300
+                    </a>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <svg className="h-4 w-4 flex-shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    <a href="tel:02129450966" className="transition hover:underline">
+                      021-29450966
+                    </a>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <svg className="h-4 w-4 flex-shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <rect width="20" height="16" x="2" y="4" rx="2" />
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                    </svg>
+                    <a href="mailto:ops@vendmart.id" className="transition hover:underline">
+                      ops@vendmart.id
+                    </a>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    <a
+                      href="https://maps.google.com/?q=Komplek+Perkantoran+Gading+Bukit+Indah+Blok+TA+10+Jl+Raya+Gading+Kirana+Kelapa+Gading+Jakarta"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition hover:underline leading-relaxed"
+                    >
+                      Gading Bukit Indah Blok TA 10, Kelapa Gading, Jakarta Utara
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
             <div className="mt-12 sm:mt-14 border-t border-white/25 pt-6 text-xs sm:text-sm text-white/85">
-              © {new Date().getFullYear()} {t.footer.rights}
+              @{new Date().getFullYear()} {t.footer.rights}
             </div>
           </div>
         </div>

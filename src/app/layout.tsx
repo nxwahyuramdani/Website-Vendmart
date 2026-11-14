@@ -89,9 +89,12 @@ const jsonLd = {
       logo: "https://vendmart.id/assets/Logo%20Vendmart%201.png",
       description: "Smart Vending Solutions Indonesia - Solusi vending machine modern terpercaya.",
       telephone: "+62-811-1907-2300",
-      email: "marketing@vendmart.id",
+      email: "ops@vendmart.id",
       address: {
         "@type": "PostalAddress",
+        streetAddress: "Komplek Perkantoran, Gading Bukit Indah, Jl. Raya Gading Kirana No.11 Blok TA 10, RT.18/RW.8, Kelapa Gading Barat",
+        addressLocality: "Kelapa Gading, Jakarta Utara",
+        postalCode: "14240",
         addressCountry: "ID",
       },
       sameAs: [
@@ -101,7 +104,14 @@ const jsonLd = {
         {
           "@type": "ContactPoint",
           telephone: "+62-811-1907-2300",
-          contactType: "customer service",
+          contactType: "marketing & sales",
+          areaServed: "ID",
+          availableLanguage: ["Indonesian", "English"],
+        },
+        {
+          "@type": "ContactPoint",
+          telephone: "+62-21-29450966",
+          contactType: "office",
           areaServed: "ID",
           availableLanguage: ["Indonesian", "English"],
         },

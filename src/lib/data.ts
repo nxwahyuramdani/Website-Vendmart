@@ -108,8 +108,11 @@ export const nav = [
   { href: "#contact", label: "Kontak" },
 ];
 
-export const WA_NUMBER = "6285212238881";
+export const WA_NUMBER = "6281119072300";
 
 /* Nomor WhatsApp Operasional (tombol WA melayang) */
 export const WA_OPS_NUMBER = "6281119072300";
 export const WA_OPS_DISPLAY = "+62 811-1907-2300";
+export const OFFICE_PHONE = "021-29450966";
+export const OFFICE_EMAIL = "ops@vendmart.id";
+export const OFFICE_ADDRESS = "Komplek Perkantoran, Gading Bukit Indah, Jl. Raya Gading Kirana No.11 Blok TA 10, RT.18/RW.8, West Kelapa Gading, Kelapa Gading, North Jakarta City, Jakarta 14240";
