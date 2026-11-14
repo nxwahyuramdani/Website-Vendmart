@@ -38,7 +38,7 @@ export default function ThemeToggle() {
       onClick={toggle}
       aria-label={`Ganti ke mode ${theme === "dark" ? "terang" : "gelap"}`}
       title={`Mode ${theme === "dark" ? "Gelap (Dark)" : "Terang (Light)"} — Klik untuk ubah`}
-      className="flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-surface text-ink transition hover:border-orange hover:text-orange"
+      className="flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-surface text-ink transition hover:border-orange hover:text-orange cursor-pointer"
     >
       {theme === "dark" ? (
         <svg className="h-4 w-4 text-amber-400 transition hover:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -29,7 +29,7 @@ export default function ContactForm() {
 
     setToast(true);
     setTimeout(() => setToast(false), 2500);
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -37,6 +37,7 @@ export default function ContactForm() {
       <form id="contactForm" onSubmit={submit} className="space-y-4">
         <input
           name="nama"
+          aria-label={t.contactSection.namePlaceholder}
           placeholder={t.contactSection.namePlaceholder}
           required
           className={field}
@@ -44,21 +45,23 @@ export default function ContactForm() {
         <input
           name="email"
           type="email"
+          aria-label={t.contactSection.emailPlaceholder}
           placeholder={t.contactSection.emailPlaceholder}
           required
           className={field}
         />
         <select
           name="minat"
+          aria-label={t.contactSection.selectPlaceholder}
           required
           defaultValue=""
-          className={`${field} dark:bg-surface`}
+          className={`${field} bg-transparent text-ink dark:bg-[#080d17]`}
         >
-          <option value="" disabled className="text-ink-soft">
+          <option value="" disabled className="text-ink-soft bg-main dark:bg-[#080d17]">
             {t.contactSection.selectPlaceholder}
           </option>
           {t.contactSection.selectOptions.map((opt) => (
-            <option key={opt} value={opt} className="text-ink dark:bg-surface">
+            <option key={opt} value={opt} className="text-ink bg-main dark:bg-[#0e1726]">
               {opt}
             </option>
           ))}
@@ -66,6 +69,7 @@ export default function ContactForm() {
         <textarea
           name="pesan"
           rows={4}
+          aria-label={t.contactSection.msgPlaceholder}
           placeholder={t.contactSection.msgPlaceholder}
           required
           className={field}
@@ -73,7 +77,7 @@ export default function ContactForm() {
         <button
           id="submitBtn"
           type="submit"
-          className="mt-4 w-full rounded-xl bg-orange px-8 py-3.5 font-bold text-white shadow-md transition hover:bg-orange-dark sm:w-auto"
+          className="mt-4 w-full rounded-xl bg-orange px-8 py-3.5 font-bold text-white shadow-md transition hover:bg-orange-dark sm:w-auto cursor-pointer"
         >
           {t.contactSection.submitBtn}
         </button>

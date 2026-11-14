@@ -58,7 +58,7 @@ function SpecModal({
         <button
           onClick={onClose}
           aria-label={closeText}
-          className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-surface text-2xl text-ink shadow transition hover:bg-orange hover:text-white"
+          className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-surface text-2xl text-ink shadow transition hover:bg-orange hover:text-white cursor-pointer"
         >
           ×
         </button>
@@ -126,7 +126,7 @@ export default function MachineGrid() {
             key={tab.k}
             type="button"
             onClick={() => setF(tab.k)}
-            className={`whitespace-nowrap border-b-2 pb-3 text-sm font-semibold transition sm:text-[15px] ${
+            className={`cursor-pointer whitespace-nowrap border-b-2 pb-3 text-sm font-semibold transition sm:text-[15px] ${
               f === tab.k ? "border-orange text-orange" : "border-transparent text-ink-soft hover:text-ink"
             }`}
           >
@@ -148,7 +148,7 @@ export default function MachineGrid() {
               <button
                 type="button"
                 onClick={() => setActive(m)}
-                className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-line bg-main text-left transition-all hover:border-orange hover:shadow-[0_12px_30px_rgba(255,177,33,0.2)]"
+                className="group flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-line bg-main text-left transition-all hover:border-orange hover:shadow-[0_12px_30px_rgba(255,177,33,0.2)]"
               >
                 <div className="relative aspect-[4/5] overflow-hidden bg-surface">
                   <Image

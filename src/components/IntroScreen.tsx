@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/context/LanguageContext";
 
 const DEFAULT_VIDEOS = [
@@ -69,13 +70,24 @@ export default function IntroScreen() {
     }
   }, [currentIndex, videoList, isMuted]);
 
-  const handleStart = () => {
+  const handleStart = useCallback(() => {
     setExiting(true);
     setTimeout(() => {
       setShow(false);
       document.body.style.overflow = "";
     }, 900);
-  };
+  }, []);
+
+  // Izinkan tombol Escape untuk langsung melewati intro
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        handleStart();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleStart]);
 
   const toggleSound = () => {
     if (videoRef.current) {
@@ -102,7 +114,7 @@ export default function IntroScreen() {
   const labels = {
     id: {
       tag: "SMART VENDING SOLUTIONS",
-      titleMain: "Masa Depan Retail ",
+      titleMain: "Masa Depan Vending ",
       titlePrefix: "Dimulai Bersama ",
       sub: "Hadirkan pengalaman belanja yang lebih praktis, cerdas, dan modern melalui solusi vending machine serta kemitraan bisnis yang fleksibel di seluruh Indonesia.",
       startBtn: "Selengkapnya",
@@ -167,7 +179,9 @@ export default function IntroScreen() {
           playsInline
           loop={videoList.length <= 1}
           preload="auto"
+          poster="/assets/Mesin Vendmart.jpeg"
           onPlaying={() => setIsVideoReady(true)}
+          onError={() => setIsVideoReady(true)}
           onEnded={handleVideoEnded}
           key={currentVideoSrc}
           className={`h-full w-full object-cover object-center filter brightness-90 transition-opacity duration-700 ${
@@ -201,7 +215,10 @@ export default function IntroScreen() {
           />
         </div>
 
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Language Switcher for International Visitors */}
+          <LanguageSwitcher />
+
           {/* Audio Button */}
           <button
             type="button"
@@ -295,7 +312,7 @@ export default function IntroScreen() {
 
       {/* 4. BOTTOM STATUS BAR */}
       <footer className="relative z-10 flex items-center justify-between px-6 py-6 sm:px-12 sm:py-8 text-[11px] sm:text-xs text-white/50 tracking-wider">
-        <div>VENDMART SMART VENDING INDONESIA</div>
+        <div>PT Vendoritel Indonesia Daksatama</div>
         <div className="flex items-center gap-3">
           {videoList.length > 1 && (
             <span className="text-white/70 font-medium">{currentLabels.videoCount}</span>

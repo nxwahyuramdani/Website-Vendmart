@@ -7,6 +7,9 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function Logo({ onOrange = false, className }: { onOrange?: boolean; className?: string }) {
+  const defaultClass = onOrange
+    ? "h-12 sm:h-14 md:h-[58px] w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)] brightness-105"
+    : "h-12 sm:h-14 md:h-[58px] w-auto object-contain";
   return (
     <a
       href="#home"
@@ -19,7 +22,7 @@ export function Logo({ onOrange = false, className }: { onOrange?: boolean; clas
         width={260}
         height={65}
         priority
-        className={className || "h-12 sm:h-14 md:h-[58px] w-auto object-contain"}
+        className={className || defaultClass}
       />
     </a>
   );
@@ -35,6 +38,14 @@ export default function Header() {
     f();
     window.addEventListener("scroll", f, { passive: true });
     return () => window.removeEventListener("scroll", f);
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   const navItems = [
@@ -86,7 +97,7 @@ export default function Header() {
             id="burger"
             aria-label="Menu"
             onClick={() => setOpen(!open)}
-            className="flex h-9 w-9 sm:h-10 sm:w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-line bg-surface text-ink lg:hidden"
+            className="flex h-9 w-9 sm:h-10 sm:w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-line bg-surface text-ink lg:hidden cursor-pointer"
           >
             <span className={`h-0.5 w-5 bg-ink transition-all ${open ? "translate-y-2 rotate-45" : ""}`} />
             <span className={`h-0.5 w-5 bg-ink transition-all ${open ? "opacity-0" : ""}`} />
