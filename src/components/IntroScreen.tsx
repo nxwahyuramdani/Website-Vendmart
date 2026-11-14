@@ -203,36 +203,36 @@ export default function IntroScreen() {
       </div>
 
       {/* 2. TOP MINIMALIST BAR */}
-      <header className="relative z-10 flex items-center justify-between px-6 py-6 sm:px-12 sm:py-8">
-        <div className="flex items-center gap-3">
+      <header className="relative z-10 flex items-center justify-between px-3.5 py-3.5 sm:px-8 sm:py-6 md:px-12 md:py-8">
+        <div className="flex items-center shrink-0">
           <Image
             src="/assets/Vendmart Logo.png"
             alt="VendMart"
             width={240}
             height={60}
             priority
-            className="h-10 sm:h-12 w-auto object-contain drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
+            className="h-6 sm:h-8 md:h-10 w-auto object-contain drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
           />
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 shrink-0">
           {/* Language Switcher for International Visitors */}
-          <LanguageSwitcher />
+          <LanguageSwitcher variant="intro" />
 
           {/* Audio Button */}
           <button
             type="button"
             onClick={toggleSound}
             title={isMuted ? currentLabels.audioUnmute : currentLabels.audioMute}
-            className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur-md transition-all duration-300 hover:border-orange hover:bg-orange/20 cursor-pointer"
+            className="flex h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur-md transition-all duration-300 hover:border-orange hover:bg-orange/20 cursor-pointer"
           >
             {isMuted ? (
-              <svg className="h-4 w-4 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-3 w-3 sm:h-3.5 sm:w-3.5 md:h-4 md:w-4 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
               </svg>
             ) : (
-              <svg className="h-4 w-4 text-orange animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-3 w-3 sm:h-3.5 sm:w-3.5 md:h-4 md:w-4 text-orange animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
               </svg>
             )}
@@ -242,7 +242,7 @@ export default function IntroScreen() {
           <button
             type="button"
             onClick={handleStart}
-            className="rounded-full border border-white/15 bg-black/35 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white/70 backdrop-blur-md transition-all hover:border-white/40 hover:text-white cursor-pointer"
+            className="flex h-7 sm:h-8 md:h-9 items-center justify-center rounded-full border border-white/20 bg-black/40 px-2.5 sm:px-3 md:px-4 text-[10px] sm:text-[11px] md:text-xs font-semibold uppercase tracking-wider text-white/80 backdrop-blur-md transition-all duration-300 hover:border-orange hover:bg-orange/20 hover:text-white cursor-pointer whitespace-nowrap"
           >
             {currentLabels.skip}
           </button>
@@ -311,7 +311,7 @@ export default function IntroScreen() {
       </main>
 
       {/* 4. BOTTOM STATUS BAR */}
-      <footer className="relative z-10 flex items-center justify-between px-6 py-6 sm:px-12 sm:py-8 text-[11px] sm:text-xs text-white/50 tracking-wider">
+      <footer className="relative z-10 flex items-center justify-between px-3.5 py-3.5 sm:px-8 sm:py-6 md:px-12 md:py-8 text-[10px] sm:text-xs text-white/50 tracking-wider">
         <div>PT Vendoritel Indonesia Daksatama</div>
         <div className="flex items-center gap-3">
           {videoList.length > 1 && (

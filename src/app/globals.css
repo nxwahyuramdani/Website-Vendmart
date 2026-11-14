@@ -121,11 +121,6 @@ html.dark iframe,
   filter: invert(0.9) hue-rotate(180deg) !important;
 }
 
-/* Header logo in dark mode */
-html.dark header a[aria-label="VendMart"] img,
-.dark header a[aria-label="VendMart"] img {
-  filter: brightness(0) invert(1);
-}
 
 /* Form controls in dark mode */
 html.dark select,

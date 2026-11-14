@@ -63,14 +63,16 @@ function SpecModal({
           ×
         </button>
 
-        <div className="relative aspect-[4/5] bg-surface sm:aspect-auto sm:min-h-[500px]">
-          <Image
-            src={m.image}
-            alt={name}
-            fill
-            sizes="(min-width:640px) 450px, 100vw"
-            className="object-cover"
-          />
+        <div className="relative flex min-h-[300px] sm:min-h-[480px] w-full items-center justify-center bg-surface p-4 sm:p-6">
+          <div className="relative h-full min-h-[280px] sm:min-h-[440px] w-full">
+            <Image
+              src={m.image}
+              alt={name}
+              fill
+              sizes="(min-width:640px) 450px, 100vw"
+              className="object-contain drop-shadow-md"
+            />
+          </div>
         </div>
 
         <div className="flex flex-col p-6 sm:p-8 md:p-10">

@@ -254,6 +254,34 @@ function AdvertisingModal({
   onClose: () => void;
   closeLabel?: string;
 }) {
+  const [imgSrc, setImgSrc] = useState(item.image);
+  const [triedExtensions, setTriedExtensions] = useState<string[]>([]);
+
+  useEffect(() => {
+    setImgSrc(item.image);
+    setTriedExtensions([item.image]);
+  }, [item.image]);
+
+  const handleImageError = () => {
+    const base = item.image.replace(/\.(jpeg|jpg|png|webp)$/i, "");
+    const candidates = [
+      `${base}.jpeg`,
+      `${base}.jpg`,
+      `${base}.png`,
+      `${base}.webp`,
+      base.toLowerCase().includes("multi_media") ? "/assets/marketing/multi_media.jpeg" : "",
+      base.toLowerCase().includes("multi_media") ? "/assets/marketing/multi_media.jpg" : "",
+      base.toLowerCase().includes("multi_media") ? "/assets/marketing/Multi_Media.jpeg" : "",
+      base.toLowerCase().includes("multi_media") ? "/assets/marketing/Multi_Media.jpg" : "",
+    ].filter(Boolean);
+
+    const next = candidates.find((c) => !triedExtensions.includes(c));
+    if (next) {
+      setTriedExtensions((prev) => [...prev, next]);
+      setImgSrc(next);
+    }
+  };
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -277,7 +305,7 @@ function AdvertisingModal({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative grid max-h-[92vh] w-full max-w-4xl overflow-y-auto rounded-t-3xl border border-line bg-main shadow-2xl sm:rounded-3xl lg:grid-cols-12"
+        className="relative grid max-h-[92vh] w-full max-w-5xl overflow-hidden rounded-t-3xl border border-line bg-main shadow-2xl sm:rounded-3xl lg:grid-cols-12"
       >
         {/* CLOSE BUTTON */}
         <button
@@ -288,87 +316,104 @@ function AdvertisingModal({
           ×
         </button>
 
-        {/* IMAGE COLUMN */}
-        <div className="relative aspect-[4/3] w-full bg-surface sm:aspect-[16/10] lg:col-span-5 lg:aspect-auto lg:min-h-full">
-          <Image
-            src={item.image}
-            alt={item.imageAlt}
-            fill
-            sizes="(min-width:1024px) 420px, 100vw"
-            className="object-cover"
-            priority
-          />
+        {/* LARGE IMAGE SHOWCASE: High-clarity 50% modal width on desktop */}
+        <div className="relative flex min-h-[320px] sm:min-h-[440px] lg:min-h-[580px] w-full items-center justify-center bg-surface/90 border-b lg:border-b-0 lg:border-r border-line p-5 sm:p-7 lg:col-span-6">
+          <div className="absolute top-4 left-4 z-10 flex items-center gap-2 rounded-full bg-main/90 border border-line px-3 py-1 shadow-sm backdrop-blur-sm">
+            <span className="h-2 w-2 rounded-full bg-orange animate-pulse" />
+            <span className="text-[11px] font-bold text-ink">Foto Asli Unit</span>
+          </div>
+
+          <div className="relative h-[290px] sm:h-[390px] lg:h-[490px] w-full">
+            <Image
+              src={`${imgSrc}?v=${item.n}`}
+              alt={item.imageAlt}
+              fill
+              unoptimized
+              sizes="(min-width:1024px) 520px, 100vw"
+              className="object-contain drop-shadow-xl transition-transform duration-300 hover:scale-[1.02]"
+              priority
+              onError={handleImageError}
+            />
+          </div>
         </div>
 
-        {/* CONTENT COLUMN */}
-        <div className="flex flex-col p-6 sm:p-8 md:p-10 lg:col-span-7">
-          <div className="flex items-center gap-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-orange">
-              Format {item.n}
-            </span>
-          </div>
+        {/* NEAT & PROPORTIONATE CONTENT COLUMN */}
+        <div className="flex flex-col justify-between overflow-y-auto p-6 sm:p-8 lg:p-9 lg:col-span-6 max-h-[92vh]">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-orange">
+                Format {item.n}
+              </span>
+            </div>
 
-          <h3
-            id={`modal-title-${item.id}`}
-            className="mt-2 text-2xl font-extrabold tracking-tight text-ink sm:text-3xl"
-          >
-            {item.title}
-          </h3>
+            <h3
+              id={`modal-title-${item.id}`}
+              className="mt-1 text-2xl sm:text-3xl font-extrabold tracking-tight text-ink"
+            >
+              {item.title}
+            </h3>
 
-          <p className="mt-1 text-sm font-semibold text-orange">
-            {item.subtitle}
-          </p>
+            <p className="mt-1 text-xs sm:text-sm font-semibold text-orange leading-snug">
+              {item.subtitle}
+            </p>
 
-          <p className="mt-4 text-sm leading-relaxed text-ink-soft sm:text-base border-b border-line pb-5">
-            {item.desc}
-          </p>
+            <p className="mt-3 text-xs sm:text-[13px] leading-relaxed text-ink-soft border-b border-line pb-4">
+              {item.desc}
+            </p>
 
-          {/* FEATURES */}
-          <div className="mt-5">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-ink">
-              {item.featuresTitle}
-            </h4>
-            <ul className="mt-3 space-y-2 text-xs sm:text-sm text-ink-soft">
-              {item.features.map((feat, idx) => (
-                <li key={idx} className="flex items-start gap-2.5">
-                  <span className="mt-1 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-orange/20 text-[10px] font-bold text-orange">
-                    ✓
-                  </span>
-                  <span>{feat}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* FEATURES */}
+            <div className="mt-4">
+              <h4 className="text-[11px] font-extrabold uppercase tracking-wider text-ink mb-2">
+                {item.featuresTitle}
+              </h4>
+              <div className="grid gap-1.5">
+                {item.features.map((feat, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-start gap-2.5 rounded-lg border border-line/60 bg-surface/60 px-3 py-2 text-xs text-ink leading-relaxed"
+                  >
+                    <span className="mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-orange/20 text-[10px] font-bold text-orange">
+                      ✓
+                    </span>
+                    <span className="text-ink">{feat}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-          {/* BENEFITS */}
-          <div className="mt-5 border-t border-line pt-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-ink">
-              {item.benefitsTitle}
-            </h4>
-            <ul className="mt-3 space-y-2 text-xs sm:text-sm text-ink-soft">
-              {item.benefits.map((b, idx) => (
-                <li key={idx} className="flex items-start gap-2.5">
-                  <span className="mt-1 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-orange text-[10px] font-bold text-white">
-                    ★
-                  </span>
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
+            {/* BENEFITS */}
+            <div className="mt-4">
+              <h4 className="text-[11px] font-extrabold uppercase tracking-wider text-ink mb-2">
+                {item.benefitsTitle}
+              </h4>
+              <div className="grid gap-1.5">
+                {item.benefits.map((b, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-start gap-2.5 rounded-lg border border-line/60 bg-surface/60 px-3 py-2 text-xs text-ink leading-relaxed"
+                  >
+                    <span className="mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-orange text-[10px] font-bold text-white">
+                      ★
+                    </span>
+                    <span className="text-ink">{b}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* ACTION BUTTON */}
-          <div className="mt-8 pt-4 border-t border-line flex flex-col sm:flex-row gap-3">
+          <div className="mt-6 pt-4 border-t border-line flex flex-col sm:flex-row gap-2.5">
             <a
               href="#contact"
               onClick={onClose}
-              className="flex-1 rounded-xl bg-orange px-6 py-3.5 text-center text-sm font-bold text-white shadow-md transition-all hover:bg-orange-dark hover:shadow-lg"
+              className="flex-1 rounded-xl bg-orange px-5 py-3 text-center text-sm font-bold text-white shadow-md transition-all hover:bg-orange-dark hover:shadow-lg"
             >
               {item.ctaText} →
             </a>
             <button
               onClick={onClose}
-              className="rounded-xl border border-line bg-surface px-5 py-3.5 text-center text-sm font-semibold text-ink transition hover:border-orange hover:text-orange cursor-pointer"
+              className="rounded-xl border border-line bg-surface px-5 py-3 text-center text-sm font-semibold text-ink transition hover:border-orange hover:text-orange cursor-pointer"
             >
               {closeLabel}
             </button>

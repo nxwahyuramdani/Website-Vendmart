@@ -8,8 +8,8 @@ import { useLanguage } from "@/context/LanguageContext";
 
 export function Logo({ onOrange = false, className }: { onOrange?: boolean; className?: string }) {
   const defaultClass = onOrange
-    ? "h-12 sm:h-14 md:h-[58px] w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)] brightness-105"
-    : "h-12 sm:h-14 md:h-[58px] w-auto object-contain";
+    ? "h-11 sm:h-12 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.25)] brightness-105"
+    : "h-11 sm:h-12 w-auto object-contain";
   return (
     <a
       href="#home"
@@ -19,8 +19,8 @@ export function Logo({ onOrange = false, className }: { onOrange?: boolean; clas
       <Image
         src="/assets/Vendmart Logo.png"
         alt="VendMart"
-        width={260}
-        height={65}
+        width={210}
+        height={52}
         priority
         className={className || defaultClass}
       />
