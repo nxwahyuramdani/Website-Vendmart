@@ -5,6 +5,85 @@ import { useEffect, useState } from "react";
 import { machines, type Machine } from "@/lib/data";
 import { useLanguage } from "@/context/LanguageContext";
 
+function ModalImage({ src, alt }: { src: string; alt: string }) {
+  const [currentSrc, setCurrentSrc] = useState(src);
+  const [attempt, setAttempt] = useState(0);
+
+  useEffect(() => {
+    setCurrentSrc(src);
+    setAttempt(0);
+  }, [src]);
+
+  const handleError = () => {
+    if (attempt === 0) {
+      if (currentSrc.endsWith(".png")) setCurrentSrc(currentSrc.replace(".png", ".jpg"));
+      else if (currentSrc.endsWith(".jpg")) setCurrentSrc(currentSrc.replace(".jpg", ".png"));
+      else if (currentSrc.endsWith(".jpeg")) setCurrentSrc(currentSrc.replace(".jpeg", ".jpg"));
+      setAttempt(1);
+    } else if (attempt === 1) {
+      if (currentSrc.endsWith(".jpg")) setCurrentSrc(currentSrc.replace(".jpg", ".jpeg"));
+      else if (currentSrc.endsWith(".png")) setCurrentSrc(currentSrc.replace(".png", ".jpeg"));
+      setAttempt(2);
+    }
+  };
+
+  return (
+    <div className="relative flex min-h-[300px] sm:min-h-[480px] w-full items-center justify-center bg-surface p-4 sm:p-6">
+      <div className="relative h-full min-h-[280px] sm:min-h-[440px] w-full">
+        <Image
+          src={currentSrc}
+          alt={alt}
+          fill
+          unoptimized
+          onError={handleError}
+          sizes="(min-width:640px) 450px, 100vw"
+          className="object-contain drop-shadow-md"
+        />
+      </div>
+    </div>
+  );
+}
+
+function MachineCardImage({ src, alt, tag }: { src: string; alt: string; tag: string }) {
+  const [currentSrc, setCurrentSrc] = useState(src);
+  const [attempt, setAttempt] = useState(0);
+
+  useEffect(() => {
+    setCurrentSrc(src);
+    setAttempt(0);
+  }, [src]);
+
+  const handleError = () => {
+    if (attempt === 0) {
+      if (currentSrc.endsWith(".png")) setCurrentSrc(currentSrc.replace(".png", ".jpg"));
+      else if (currentSrc.endsWith(".jpg")) setCurrentSrc(currentSrc.replace(".jpg", ".png"));
+      else if (currentSrc.endsWith(".jpeg")) setCurrentSrc(currentSrc.replace(".jpeg", ".jpg"));
+      setAttempt(1);
+    } else if (attempt === 1) {
+      if (currentSrc.endsWith(".jpg")) setCurrentSrc(currentSrc.replace(".jpg", ".jpeg"));
+      else if (currentSrc.endsWith(".png")) setCurrentSrc(currentSrc.replace(".png", ".jpeg"));
+      setAttempt(2);
+    }
+  };
+
+  return (
+    <div className="relative aspect-[4/5] overflow-hidden bg-surface flex items-center justify-center p-3">
+      <Image
+        src={currentSrc}
+        alt={alt}
+        fill
+        unoptimized
+        onError={handleError}
+        sizes="(min-width:1024px) 380px, (min-width:640px) 50vw, 100vw"
+        className="object-contain transition duration-500 group-hover:scale-105"
+      />
+      <span className="absolute left-4 top-4 rounded-md bg-main/90 px-3 py-1 text-xs font-bold uppercase tracking-wider text-orange shadow-sm backdrop-blur-sm">
+        {tag}
+      </span>
+    </div>
+  );
+}
+
 function SpecModal({
   m,
   onClose,
@@ -63,17 +142,7 @@ function SpecModal({
           ×
         </button>
 
-        <div className="relative flex min-h-[300px] sm:min-h-[480px] w-full items-center justify-center bg-surface p-4 sm:p-6">
-          <div className="relative h-full min-h-[280px] sm:min-h-[440px] w-full">
-            <Image
-              src={m.image}
-              alt={name}
-              fill
-              sizes="(min-width:640px) 450px, 100vw"
-              className="object-contain drop-shadow-md"
-            />
-          </div>
-        </div>
+        <ModalImage src={m.image} alt={name} />
 
         <div className="flex flex-col p-6 sm:p-8 md:p-10">
           <span className="text-sm font-semibold uppercase tracking-[0.16em] text-orange">{tag}</span>
@@ -152,18 +221,7 @@ export default function MachineGrid() {
                 onClick={() => setActive(m)}
                 className="group flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-line bg-main text-left transition-all hover:border-orange hover:shadow-[0_12px_30px_rgba(255,177,33,0.2)]"
               >
-                <div className="relative aspect-[4/5] overflow-hidden bg-surface">
-                  <Image
-                    src={m.image}
-                    alt={name}
-                    fill
-                    sizes="(min-width:1024px) 380px, (min-width:640px) 50vw, 100vw"
-                    className="object-cover transition duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute left-4 top-4 rounded-md bg-main/90 px-3 py-1 text-xs font-bold uppercase tracking-wider text-orange shadow-sm backdrop-blur-sm">
-                    {tag}
-                  </span>
-                </div>
+                <MachineCardImage src={m.image} alt={name} tag={tag} />
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <h3 className="text-lg font-bold text-ink sm:text-xl">{name}</h3>
                   <p className="mt-2 flex-1 text-sm text-ink-soft leading-relaxed">{desc}</p>

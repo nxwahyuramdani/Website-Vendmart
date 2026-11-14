@@ -56,16 +56,16 @@ export default function Home() {
               </div>
             </Reveal>
 
-            {/* HERO IMAGE: Border & orange box removed as requested */}
+            {/* HERO IMAGE: Vending Machine Smart */}
             <Reveal delay={120} className="lg:col-span-6">
-              <div className="relative mx-auto aspect-[4/5] w-full max-w-[520px] overflow-hidden rounded-2xl shadow-2xl lg:ml-auto">
+              <div className="relative mx-auto aspect-[4/5] w-full max-w-[520px] flex items-center justify-center lg:ml-auto">
                 <Image
-                  src="/assets/Mesin Vendmart.jpeg"
+                  src="/assets/vending machine smart.png"
                   alt={t.hero.imgAlt}
                   fill
                   priority
                   sizes="(min-width:1024px) 520px, 100vw"
-                  className="object-cover object-center"
+                  className="object-contain object-center drop-shadow-[0_20px_40px_rgba(0,0,0,0.28)] transition-transform duration-500 hover:scale-105"
                 />
               </div>
             </Reveal>
